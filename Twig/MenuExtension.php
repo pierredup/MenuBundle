@@ -19,15 +19,10 @@ use JMS\DiExtraBundle\Annotation as DI;
  */
 class MenuExtension extends \Twig_Extension
 {
-    /**
-     * @DI\Inject("cs_menu.renderer")
+	/**
+     * @DI\Inject("service_container")
      */
-    public $renderer;
-
-    /**
-     * @DI\Inject("cs_menu.provider")
-     */
-    public $provider;
+    public $container;
 
     /**
      * (non-PHPdoc)
@@ -44,9 +39,9 @@ class MenuExtension extends \Twig_Extension
      */
     public function menu($type, array $options = array())
     {
-        $menu = $this->provider->get($type);
+        $menu = $this->container->get('cs_menu.provider')->get($type);
 
-        return $this->renderer->render($menu, $options);
+        return $this->container->get('cs_menu.renderer')->render($menu, $options);
     }
 
     /**
