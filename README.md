@@ -28,7 +28,7 @@ To install, add the following to you composer.json file:
     "require": {
         "php": ">=5.3.3",
         ....
-        "customscripts/csmenu_bundle" : "dev-master"
+        "customscripts/menubundle" : "dev-master"
 
 Update composer dependencies:
 
