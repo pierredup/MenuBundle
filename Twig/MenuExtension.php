@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace CS\CoreBundle\Twig;
+namespace CS\MenuBundle\Twig;
 
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
- * @DI\Service("core.menu")
+ * @DI\Service("cs_menu.twig")
  * @DI\Tag("twig.extension")
  */
 class MenuExtension extends \Twig_Extension
