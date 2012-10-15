@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the CSBill package.
+ * This file is part of the CSMenuBundle package.
  *
  * (c) Pierre du Plessis <info@customscripts.co.za>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CS\CoreBundle\Menu;
+namespace CS\MenuBundle\Menu;
 
 use Knp\Menu\Renderer\ListRenderer;
 use Knp\Menu\Matcher\Matcher;
