@@ -1,0 +1,26 @@
+{
+    "name":         "customscripts/menubundle",
+    "description":  "This bundle extends the KnpMenuBundle to define custom menus per controller action with annotations",
+    "keywords":     ["menu"],
+    "type":         "symfony-bundle",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "CustomScripts",
+            "homepage": "http://customscripts.co.za"
+        },
+        {
+            "name":     "Pierre du Plessis",
+            "email":    "info@customscripts.co.za"
+        },
+    ],
+    "require":      {
+        "knplabs/knp-menu-bundle" : "dev-master",
+        "symfony/framework-bundle": ">=2.0,<2.3-dev"
+    },
+    "autoload":     {
+        "psr-0": { "CS\\MenuBundle": "" }
+    },
+    "target-dir": "CS/MenuBundle",
+    "minimum-stability": "dev"
+}
