@@ -16,6 +16,8 @@ use CS\MenuBundle\Event\ConfigureMenuEvent;
 
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\Security\Core\Util\ClassUtils;
+
 use Knp\Menu\ItemInterface;
 
 use JMS\DiExtraBundle\Annotation as DI;
@@ -43,7 +45,7 @@ class Menu
             return;
         }
 
-        $object = new \ReflectionObject($controller[0]);// get controller
+        $object = new \ReflectionClass(ClassUtils::getRealClass($controller[0]));// get controller
         $method = $object->getMethod($controller[1]);// get method
 
         $reader = $this->container->get('annotation_reader');
