@@ -17,7 +17,7 @@ use Knp\Menu\Silex\Voter\RouteVoter;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
- * @DI\Service("cs_menu.renderer");
+ * @DI\Service("cs_menu.renderer", scope="request");
  * @DI\Tag(name="knp_menu.renderer", attributes={"alias"="cs_menu"})
  */
 class Renderer extends ListRenderer
