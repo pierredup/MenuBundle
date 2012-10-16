@@ -52,7 +52,7 @@ class Builder extends ContainerAware
 
     	foreach($this->builders as $builder)
     	{
-    		if(method_exists($builder, $method_name))
+    		if(method_exists($builder, $method))
     		{
     			return $builder;
     		}
@@ -65,7 +65,7 @@ class Builder extends ContainerAware
     {
     	if(($builder = $this->has($method)) === false)
     	{
-    		throw new \Exception(sprintf("No builders specify the '%s' method", $methodName));
+    		throw new \Exception(sprintf("No builders specify the '%s' method", $method));
     	}
 
     	return call_user_func(array($builder, $method));
