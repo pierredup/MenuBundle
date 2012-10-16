@@ -47,7 +47,7 @@ class Provider implements MenuProviderInterface
     {
         $method = $this->getMethod($name);
 
-        $menu = isset($this->items[$name]) ? $this->items[$name] :  $this->builder->{$method}();
+        $menu = isset($this->items[$name]) ? $this->items[$name] :  $this->builder->get($method);
 
         if ($menu === null) {
             throw new \InvalidArgumentException(sprintf('The menu "%s" is not defined.', $name));
@@ -72,7 +72,7 @@ class Provider implements MenuProviderInterface
     {
         $method = $this->getMethod($name);
 
-        return isset($this->items[$name]) || method_exists($this->builder, $method);
+        return isset($this->items[$name]) || $this->builder->has($method) !== false;
     }
 
     public function getMethod($name)

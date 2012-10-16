@@ -12,7 +12,16 @@
 namespace CS\MenuBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+use CS\MenuBundle\DependencyInjection\Compiler\BuilderCompilerPass;
 
 class CSMenuBundle extends Bundle
 {
+	public function build(ContainerBuilder $container)
+	{
+		parent::build($container);
+
+		$container->addCompilerPass(new BuilderCompilerPass());
+	}
 }

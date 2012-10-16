@@ -57,7 +57,7 @@ class Menu
                 $menu_method = $name.'Menu';
 
                 $menu_builder = $controller[0]->get("cs_menu.builder");
-                $menu = $menu_builder->{$menu_method}();
+                $menu = $menu_builder->get($menu_method);
 
                 $factory = $menu_builder->getFactory();
 

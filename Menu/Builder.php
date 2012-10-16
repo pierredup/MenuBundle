@@ -20,6 +20,14 @@ use JMS\DiExtraBundle\Annotation as DI;
  */
 class Builder extends ContainerAware
 {
+
+	protected $builders = array();
+
+	public function addBuilder($builder)
+	{
+		$this->builders[] = $builder;
+	}
+
     /**
      * @DI\Inject("service_container");
      */
@@ -32,30 +40,31 @@ class Builder extends ContainerAware
         return $factory;
     }
 
-    public function sidebarMenu()
+    public function has($mehtod)
     {
-        $factory = $this->getFactory();
+    	if(empty($this->builders))
+    	{
+    		throw new \Exception("No menu builders defined! perhaps you forgot to create a service and tag it with 'cs_menu.builder'?");
+    	}
 
-        $menu = $factory->createItem('root');
+    	foreach($this->builders as $builder)
+    	{
+    		if(method_exists($builder, $method_name))
+    		{
+    			return $builder;
+    		}
+    	}
 
-        $menu->addChild('Dashboard', array('route' => '_dashboard'));
-
-        $menu->setChildrenAttributes(array('class' => 'nav nav-list'));
-
-        return $menu;
+    	return false;
     }
 
-    public function topMenu()
+    public function get($method)
     {
-        $factory = $this->getFactory();
+    	if(($builder = $this->has($method)) === false)
+    	{
+    		throw new \Exception(sprintf("No builders specify the '%s' method", $methodName));
+    	}
 
-        $menu = $factory->createItem('root');
-
-        $menu->setChildrenAttribute('class', 'nav');
-
-        $menu->addChild('Home', array('route' => '_dashboard'));
-        $menu->addChild('Clients', array('route' => '_client_index'));
-
-        return $menu;
+    	return call_user_func(array($builder, $method));
     }
 }
