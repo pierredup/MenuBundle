@@ -43,7 +43,7 @@ class Builder extends ContainerAware
         return $factory;
     }
 
-    public function has($mehtod)
+    public function has($method)
     {
     	if(empty($this->builders))
     	{
