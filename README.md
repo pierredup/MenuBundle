@@ -90,6 +90,43 @@ This method takes 2 arguments, the first is the menu builder, which can be used 
         }
     }
 
+
+Lastly you need to create your menu builder, which is used to build the different menu blocks. With the menu builder, you can add default items (E.G a 'home' link) if you want, or specify custom attributes for the menu (E.G custom class etc).
+Your builder follows the same namin convention as your menu class.
+E.G to build the sidebar menu, you need to specify a ````sidebarMenu```` method, which takes 
+
+To create a menu builder, you need to create a new service and tag it with the ````cs_menu.builder```` tag.
+E.G:
+
+    parameters:
+        acme_demo.menu.builder.class: Acme\DemoBundle\Menu\Builder
+
+    services:
+            acme_demo.menu_builder
+                class: %acme_demo.menu.builder.class% 
+                tags:
+                    - { name: cs_menu.builder }
+                    
+Then create your builder:
+
+    namespace Acme\DemoBundle\Menu;
+    
+    class Builder {
+        
+        public function sidebarMenu()
+        {
+            $factory = $this->container->get('knp_menu.factory');
+
+            $menu = $factory->createItem('root');
+
+            $menu->addChild('Dashboard', array('route' => '_dashboard'));
+
+            $menu->setChildrenAttributes(array('class' => 'nav nav-list'));
+
+            return $menu;
+        }
+    }
+
 Contributing
 ------------
 
