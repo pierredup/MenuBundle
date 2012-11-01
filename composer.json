@@ -15,7 +15,7 @@
         }
     ],
     "require":      {
-        "knplabs/knp-menu-bundle": ">=1.1.*,<2.0.x-dev",
+        "knplabs/knp-menu-bundle": "dev-master",
         "symfony/framework-bundle": ">=2.0,<2.3-dev",
         "jms/di-extra-bundle": "1.1.*"
     },
